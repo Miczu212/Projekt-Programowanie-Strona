@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Strona Tytułowa";
+}
+@model tysjyfgjkhfghjetsrstr.Models.Model
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+      
+
+
+</head>
+<div class="text-center">
+    <h1 class="display-4">WITAJ</h1>
+    <!--<form method="post" action="Url.Action("Wyniki", "Home")">-->
+        <form method="post" asp-action="Wyniki" asp-controller="Home">
+    <div class="StacjaStartowa">
+       
+        <p>Przyjazd Z</p>
+            @Html.DropDownListFor(m => m.SelectedOptionfrom, Model.OptionsList, "-- Wybierz opcję --", new { @class = "combobox",name="SelectedOptionfrom", @readonly = "readonly" })
+        <script>
+            var $j = $.noConflict();
+            $j(document).ready(function () {
+                $j('.combobox').select2({
+                    tags: true,
+                    language: {
+                        noResults: function () {
+                            return "Brak wyników.";
+                        }
+                    },
+                    createTag: function (params) {
+                        return null; // Zablokuj dodawanie nowych wartości
+                    }
+                });
+            });
+        </script>
+        </div>
+        <br>
+        <div class="StacjaDocelowa">
+
+            <p>Przyjazd Do</p>
+                @Html.DropDownListFor(m => m.SelectedOptionto, Model.OptionsList, "-- Wybierz opcję --", new { @class = "combobox",name="SelectedOptionto", @readonly = "readonly" })
+            <script>
+                
+                $j(document).ready(function () {
+                    $j('.combobox').select2({
+                        tags: true,
+                        language: {
+                            noResults: function () {
+                                return "Brak wyników.";
+                            }
+                        },
+                        createTag: function (params) {
+                            return null; // Zablokuj dodawanie nowych wartości
+                        }
+                    });
+                });
+            </script>
+            <p></p>
+        <button id="stacje_submit" type="submit" class="w-100 btn btn-lg btn-primary">Sprawdź</button>
+    </form>
+</div>

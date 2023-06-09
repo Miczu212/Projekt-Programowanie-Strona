@@ -1,0 +1,35 @@
+﻿@model tysjyfgjkhfghjetsrstr.Models.listapolaczenia
+<div class="text-center">
+<h1 class="display-4">Wyniki Wyszukiwania</h1>
+</div>
+@if(Model.lista.Count==0)
+{
+<h2>Niestety nie ma takiego połączenia, za utrudnienia przepraszamy.</h2>
+}
+else if (Model.czyprzesiadka == true)
+{
+    <h2>Niestety nie ma takiego bezpośredniego połączenia</h2>
+    <h3>Poniżej znajduję się lista połączeń których trzeba użyć</h3>
+}
+else
+{
+    <h2>Znaleźiono połączenie</h2>
+}
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Stacja Początkowa</th>
+            <th>Stacja Docelowa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.lista)
+        {   
+            <tr>
+                <td>@item.stacja1</td>
+                <td>@item.stacja2</td>
+            </tr>
+        }
+    </tbody>
+</table>
